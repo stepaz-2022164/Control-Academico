@@ -10,7 +10,12 @@ const courseSchema = Schema({
     description:{
         type: String,
         required: true
+    },
+    teacher:{
+        type: Schema.ObjectId,
+        ref: 'teacher',
+        required: true
     }
 })
 
-export default model('couser', courseSchema)
+export default model('course', courseSchema)

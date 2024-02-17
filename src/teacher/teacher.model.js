@@ -11,7 +11,7 @@ const teacherSchema = Schema({
         type: String,
         required: true
     },
-    user:{
+    username:{
         type: String,
         required: true
     },
@@ -23,13 +23,8 @@ const teacherSchema = Schema({
         type: String,
         required: true
     },
-    phone:{
+    role: {
         type: String,
-        required: true
-    },
-    course:{
-        type: Schema.ObjectId,
-        ref: 'course',
         required: true
     }
 })
