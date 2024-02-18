@@ -17,3 +17,14 @@ export const checkPassword = async(password, hash)=>{
         return err
     }
 }
+
+export const checkUpdate = (data, courseId) => {
+    if(courseId){
+        if(
+            Object.entries(data).length === 0 ||
+            data.teacher ||
+            data.teacher == ''
+        ) return false
+        return true
+    } 
+}

@@ -3,6 +3,8 @@ import express from 'express'
 import {config} from 'dotenv'
 import studentRoutes from '../src/student/students.routes.js'
 import teacherRoutes from '../src/teacher/teacher.routes.js'
+import courseRoutes from '../src/course/course.routes.js'
+
 
 const app = express()
 config()
@@ -13,6 +15,7 @@ app.use(express.json())
 
 app.use('/student', studentRoutes)
 app.use('/teacher', teacherRoutes)
+app.use('/course', courseRoutes)
 
 export const initServer = () => {
     app.listen(port)
