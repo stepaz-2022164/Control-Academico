@@ -2,23 +2,22 @@
 
 import Teacher from './teacher.model.js'
 import Course from '../course/course.model.js'
-import { checkPassword, encrypt } from '../utils/validator.js'
+import { checkPassword, encrypt, checkUpdateUser } from '../utils/validator.js'
 import { generateJwt } from '../utils/jwt.js'
 
-export const defaultTeacher = async (name, surname, username, password, email) => {
+export const defaultTeacher = async () => {
     try {
-        const existingTeacher = await Teacher.findOne({role: 'TEACHER'})
-
+        let existingTeacher = await Teacher.findOne({username: 'jnoj'})
         if(!existingTeacher){
-            const data = {
-                name: name,
-                surname: surname,
-                username: username,
-                password: await encrypt(password),
-                email: email,
+            let data = {
+                name: 'Josue',
+                surname: 'Noj',
+                username: 'jnoj',   
+                password: await encrypt('12345'),
+                email: 'jnoj@kinal.edu.gt',
                 role: 'TEACHER'
             }
-            const teacher = new Teacher(data)
+            let teacher = new Teacher(data)
             await teacher.save()
             return console.log('Teacher by default created')
         } else {
@@ -71,12 +70,46 @@ export const login = async (req,res) => {
 
 export const viewCourses = async (req, res) => {
     try {
-        const teacherId = req.teacher._id
-        const teacherName = req.teacher.name + ' ' +req.teacher.surname
-        const courses = await Course.find({ teacher: teacherId })
+        let teacherId = req.teacher._id
+        let teacherName = req.teacher.name + ' ' +req.teacher.surname
+        let courses = await Course.find({ teacher: teacherId })
         return res.send({ teacherName, courses })
     } catch (error) {
         console.error(error);
         return res.status(500).send({ message: 'Error fetching teacher courses' })
+    }
+}
+
+export const editProfile = async (req, res) => {
+    try {
+        let data = req.body
+        let teacherIdL = req.teacher._id
+        let teacherIdU = req.params.id
+        if (teacherIdL.toString() !== teacherIdU.toString()) return res.status(404).send({ message: 'You only can update your user'})
+        let update = checkUpdateUser(data, teacherIdU)
+        if (!update) return res.status(400).send({ message: 'Can not update because you send some data that can not be updated or missing data' })
+        let updatedTeacher = await Teacher.findOneAndUpdate(
+        {_id: teacherIdU},
+        data,
+        { new: true })
+        if (!updatedTeacher) return res.status(401).send({message: 'User not found and not updated'})
+        return res.send({message: 'User updated succesfully', updatedTeacher})
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send({ message: 'Error updating student profile' })
+    }
+}
+
+export const deleteProfile = async (req, res) => {
+    try {
+        let teacherIdL = req.teacher._id
+        let teacherIdU = req.params.id
+        if (teacherIdL.toString() !== teacherIdU.toString()) return res.status(404).send({ message: 'You only can delete your user'})
+        let deletedTeacher = await Teacher.findOneAndDelete({_id: teacherIdU})
+        if (!deletedTeacher) return res.status(401).send({message: 'User not found and not deleted'})
+        return res.send({message: 'User deleted succesfully'})
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send({ message: 'Error deleting teacher profile' })
     }
 }

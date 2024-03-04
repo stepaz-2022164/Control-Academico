@@ -8,9 +8,9 @@ const api = express.Router()
 
 api.post('/register', register)
 api.post('/login', login)
-api.post('/assignCourse', validateJwtStudent, isStudent ,assignCourse)
-api.get('/courses', validateJwtStudent, isStudent, viewCourses)
-api.put('/editProfile', validateJwtStudent, isStudent, editProfile)
-api.delete('/deleteProfile', validateJwtStudent, isStudent, deleteProfile)    
+api.post('/assignCourse', [validateJwtStudent, isStudent] ,assignCourse)
+api.get('/courses', [validateJwtStudent, isStudent], viewCourses)
+api.put('/editProfile/:id', [validateJwtStudent, isStudent], editProfile)
+api.delete('/deleteProfile/:id', [validateJwtStudent, isStudent], deleteProfile)  
 
 export default api

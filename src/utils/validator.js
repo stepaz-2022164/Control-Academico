@@ -28,3 +28,14 @@ export const checkUpdate = (data, courseId) => {
         return true
     } 
 }
+
+export const checkUpdateUser = (data, userId) => {
+    if (userId) {
+        if (
+            Object.entries(data).length === 0 ||
+            data.role ||
+            data.role == ''
+        ) return false
+        return true
+    }
+}

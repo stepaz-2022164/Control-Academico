@@ -4,11 +4,14 @@ import Student from './student.model.js'
 import Course from '../course/course.model.js'
 import { encrypt, checkPassword } from '../utils/validator.js'
 import { generateJwt } from '../utils/jwt.js'
+import { checkUpdateUser } from '../utils/validator.js'
 
 export const register = async (req, res) => {
     try {
         let data = req.body
         data.password = await encrypt(data.password)
+        let existingStudent = await Student.findOne({username: data.username})
+        if (existingStudent) return res.status(400).send({ message: 'User already exists' })
         data.role = 'STUDENT'
         let student = new Student(data)
         await student.save()
@@ -47,42 +50,34 @@ export const login = async (req,res) => {
 
 export const assignCourse = async (req, res) => {
     try {
-        const studentId = req.student._id;
-        const student = await Student.findById(studentId).populate('courses');
-        
+        let studentId = req.student._id
+        let student = await Student.findById(studentId).populate('courses')
         if (student.courses.length >= 3) {
-            return res.status(400).send({ message: 'The student has already been assigned the maximum number of courses' });
+            return res.status(400).send({ message: 'The student has already been assigned the maximum number of courses' })
         }
-
-        const { courseId } = req.body;
-
-        // Verificar si el curso ya está asignado al estudiante
+        let { courseId } = req.body
         if (student.courses.some(course => course._id.toString() === courseId)) {
-            return res.status(400).send({ message: 'The course is already assigned to the student' });
+            return res.status(400).send({ message: 'The course is already assigned to the student' })
         }
-
-        // Verificar si el curso existe
-        const course = await Course.findById(courseId);
+        let course = await Course.findOne({_id: courseId})
         if (!course) {
-            return res.status(404).send({ message: 'Course not found' });
+            return res.status(404).send({ message: 'Course not found' })
         }
-
-        // Asignar el curso al estudiante
-        student.courses.push(courseId);
-        await student.save();
-
-        return res.send({ message: 'Course assigned successfully' });
+        student.courses.push(courseId)
+        await student.save()
+        return res.send({ message: 'Course assigned successfully' })
     } catch (error) {
         console.error(error);
-        return res.status(500).send({ message: 'Error assigning course to student' });
+        return res.status(500).send({ message: 'Error assigning course to student' })
     }
 }
 
 export const viewCourses = async (req, res) => {
     try {
-        const studentId = req.student._id
-        const student = await Student.findById(studentId)
-        return res.send(student.courses)
+        let studentId = req.student._id
+        let student = await Student.findOne(studentId)
+        let courses = await Course.find({_id: student.courses}).populate('courses' ['name', 'description'])
+        return res.send({courses})
     } catch (error) {
         console.error(error)
         return res.status(500).send({ message: 'Error retrieving student courses' })
@@ -91,9 +86,18 @@ export const viewCourses = async (req, res) => {
 
 export const editProfile = async (req, res) => {
     try {
-        const studentId = req.student._id
-        const updatedStudent = await Student.findByIdAndUpdate(studentId, req.body, { new: true })
-        return res.send(updatedStudent)
+        let data = req.body
+        let studentIdL = req.student._id
+        let studentIdU = req.params.id
+        if (studentIdL.toString() !== studentIdU.toString()) return res.status(404).send({ message: 'You only can update your user'})
+        let update = checkUpdateUser(data, studentIdU)
+        if (!update) return res.status(400).send({ message: 'Can not update because you send some data that can not be updated or missing data' })
+        let updatedStudent = await Student.findOneAndUpdate(
+        {_id: studentIdU},
+        data,
+        { new: true })
+        if (!updatedStudent) return res.status(401).send({message: 'User not found and not updated'})
+        return res.send({message: 'User updated succesfully', updatedStudent})
     } catch (error) {
         console.error(error)
         return res.status(500).send({ message: 'Error updating student profile' })
@@ -102,11 +106,14 @@ export const editProfile = async (req, res) => {
 
 export const deleteProfile = async (req, res) => {
     try {
-        const studentId = req.student._id
-        await Student.findByIdAndDelete(studentId)
+        let studentIdL = req.student._id
+        let studentIdU = req.params.id
+        if (studentIdL.toString() !== studentIdU.toString()) return res.status(404).send({ message: 'You only can delete your user'})
+        let deleteUser = await Student.findOneAndDelete({_id: studentIdU})
+        if (!deleteUser) return res.status(401).send({message: 'User not found and not deleted'})
         return res.send({ message: 'Student profile deleted successfully' })
     } catch (error) {
-        console.error(error);
+        console.error(error)
         return res.status(500).send({ message: 'Error deleting student profile' })
     }
 }

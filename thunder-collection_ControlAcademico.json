@@ -1,0 +1,420 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "ControlAcademico",
+    "dateExported": "2024-03-04T02:31:29.119Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "143bab97-6e4b-4b93-84a8-258f27028d1b",
+            "name": "Alumno",
+            "containerId": "",
+            "created": "2024-02-23T14:10:40.913Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "fc7355da-47c7-4fc1-8118-58385e73adab",
+            "name": "Maestro",
+            "containerId": "",
+            "created": "2024-02-23T14:10:51.042Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "9660bdf5-2077-4027-9fc2-a71ca302c69a",
+            "name": "Curso",
+            "containerId": "",
+            "created": "2024-02-23T14:11:02.779Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "b2f3314b-3848-4424-9551-ee767d661c90",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "143bab97-6e4b-4b93-84a8-258f27028d1b",
+            "name": "registro - alumno",
+            "url": "/student/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-23T14:12:06.046Z",
+            "modified": "2024-03-04T01:39:17.187Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Sergio"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "Tepaz"
+                    },
+                    {
+                        "name": "username",
+                        "value": "stepaz2"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345"
+                    },
+                    {
+                        "name": "email",
+                        "value": "stepaz@kinal.edu.gt"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "f22fd957-24be-483a-95db-501acac6ff1a",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "143bab97-6e4b-4b93-84a8-258f27028d1b",
+            "name": "login - alumno",
+            "url": "/student/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-23T14:15:08.681Z",
+            "modified": "2024-02-23T14:18:13.112Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "stepaz"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "384b1b10-45a8-43bd-b03d-ff015f11f5d7",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "143bab97-6e4b-4b93-84a8-258f27028d1b",
+            "name": "update - alumno",
+            "url": "/student/editProfile/65e525613f6cfd738e0db979",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-02-23T14:21:09.240Z",
+            "modified": "2024-03-04T01:39:36.706Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI2NWU1MjU2MTNmNmNmZDczOGUwZGI5NzkiLCJ1c2VybmFtZSI6InN0ZXBheiIsIm5hbWUiOiJTZXJnaW8iLCJzdXJuYW1lIjoiVGVwYXoiLCJyb2xlIjoiU1RVREVOVCIsImlhdCI6MTcwOTUxNjI2NiwiZXhwIjoxNzA5NTI3MDY2fQ.-BjGdrBpkTMec17RApXddoT3bGmraUB8DI2eBPoX5cg"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Eduardo"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "Vela"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "4b43754a-4353-4952-86bb-8627cfd33414",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "143bab97-6e4b-4b93-84a8-258f27028d1b",
+            "name": "delete - alumno",
+            "url": "/student/deleteProfile/65e52645002dd65a221531c9",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-02-23T14:24:52.264Z",
+            "modified": "2024-03-04T02:00:01.059Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI2NWU1MjU2MTNmNmNmZDczOGUwZGI5NzkiLCJ1c2VybmFtZSI6InN0ZXBheiIsIm5hbWUiOiJFZHVhcmRvIiwic3VybmFtZSI6IlZlbGEiLCJyb2xlIjoiU1RVREVOVCIsImlhdCI6MTcwOTUxNjgyOSwiZXhwIjoxNzA5NTI3NjI5fQ.08aH2EB_mgC7o2wTomF0VzGcnM2Nmg63taBai8utE4s"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "883cf987-0404-4570-ad46-b4b44d6e0e85",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "143bab97-6e4b-4b93-84a8-258f27028d1b",
+            "name": "asignar cursos",
+            "url": "/student/assignCourse",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-02-23T14:28:07.702Z",
+            "modified": "2024-03-04T01:48:05.001Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI2NWU1MjU2MTNmNmNmZDczOGUwZGI5NzkiLCJ1c2VybmFtZSI6InN0ZXBheiIsIm5hbWUiOiJFZHVhcmRvIiwic3VybmFtZSI6IlZlbGEiLCJyb2xlIjoiU1RVREVOVCIsImlhdCI6MTcwOTUxNjgyOSwiZXhwIjoxNzA5NTI3NjI5fQ.08aH2EB_mgC7o2wTomF0VzGcnM2Nmg63taBai8utE4s"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "courseId",
+                        "value": "65e5277ee0cdfc791f61aeaf"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "be55f048-17ff-4aa4-9cce-9313b4cacf49",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "143bab97-6e4b-4b93-84a8-258f27028d1b",
+            "name": "get cursos - alumno",
+            "url": "/student/courses",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-02-23T14:31:45.073Z",
+            "modified": "2024-03-04T01:51:32.510Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI2NWU1MjU2MTNmNmNmZDczOGUwZGI5NzkiLCJ1c2VybmFtZSI6InN0ZXBheiIsIm5hbWUiOiJFZHVhcmRvIiwic3VybmFtZSI6IlZlbGEiLCJyb2xlIjoiU1RVREVOVCIsImlhdCI6MTcwOTUxNjgyOSwiZXhwIjoxNzA5NTI3NjI5fQ.08aH2EB_mgC7o2wTomF0VzGcnM2Nmg63taBai8utE4s"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ce10a4cf-7a8e-4886-bcb4-23adf41ad268",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "fc7355da-47c7-4fc1-8118-58385e73adab",
+            "name": "registro - maestro",
+            "url": "/teacher/register",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-02-23T15:13:47.999Z",
+            "modified": "2024-02-23T15:15:16.946Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Pedro"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "Armas"
+                    },
+                    {
+                        "name": "username",
+                        "value": "parmas"
+                    },
+                    {
+                        "name": "password",
+                        "value": "1234"
+                    },
+                    {
+                        "name": "email",
+                        "value": "parmas@kinal.org.gt"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "e449654d-aa02-4ab9-a8e2-f55314515f43",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "fc7355da-47c7-4fc1-8118-58385e73adab",
+            "name": "login - maestro",
+            "url": "/teacher/login",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-02-23T15:17:32.349Z",
+            "modified": "2024-03-04T02:20:16.095Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "parmas"
+                    },
+                    {
+                        "name": "password",
+                        "value": "1234"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "388802ec-19a2-403a-b308-626b63cd42a5",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "fc7355da-47c7-4fc1-8118-58385e73adab",
+            "name": "get cursos - maestro",
+            "url": "/teacher/viewCourses",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-02-23T15:19:08.516Z",
+            "modified": "2024-03-04T01:46:45.043Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aWQiOiI2NWU1MTQwN2Y0ZTM2MmQ5MTkyZmUyYmEiLCJ1c2VybmFtZSI6Impub2oiLCJuYW1lIjoiSm9zdWUiLCJzdXJuYW1lIjoiTm9qIiwicm9sZSI6IlRFQUNIRVIiLCJpYXQiOjE3MDk1MTY0MjUsImV4cCI6MTcwOTUyNzIyNX0.dIya-7m-rynbX8YJo_GMc5V2h_caNdXhfGX75CeHalA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "86e48230-8c05-44de-81a8-756bba0ca84f",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "9660bdf5-2077-4027-9fc2-a71ca302c69a",
+            "name": "crear curso",
+            "url": "/course/createCourse",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-02-23T15:20:30.224Z",
+            "modified": "2024-03-04T02:16:54.537Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aWQiOiI2NWU1MTQwN2Y0ZTM2MmQ5MTkyZmUyYmEiLCJ1c2VybmFtZSI6Impub2oiLCJuYW1lIjoiSm9zdWUiLCJzdXJuYW1lIjoiTm9qIiwicm9sZSI6IlRFQUNIRVIiLCJpYXQiOjE3MDk1MTY0MjUsImV4cCI6MTcwOTUyNzIyNX0.dIya-7m-rynbX8YJo_GMc5V2h_caNdXhfGX75CeHalA"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Tecnologia"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Curso en donde se realizaran practicas de la carrera"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "f6ca16fe-17d1-4798-88a5-ac44279d683a",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "9660bdf5-2077-4027-9fc2-a71ca302c69a",
+            "name": "editar curso",
+            "url": "/course/editCourse/65e526b9002dd65a221531d0",
+            "method": "PUT",
+            "sortNum": 110000,
+            "created": "2024-02-23T15:22:56.971Z",
+            "modified": "2024-03-04T02:17:18.073Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aWQiOiI2NWU1MTQwN2Y0ZTM2MmQ5MTkyZmUyYmEiLCJ1c2VybmFtZSI6Impub2oiLCJuYW1lIjoiSm9zdWUiLCJzdXJuYW1lIjoiTm9qIiwicm9sZSI6IlRFQUNIRVIiLCJpYXQiOjE3MDk1MTY0MjUsImV4cCI6MTcwOTUyNzIyNX0.dIya-7m-rynbX8YJo_GMc5V2h_caNdXhfGX75CeHalA"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "description",
+                        "value": "Curso practico"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "85431654-0350-497c-8c3f-8ac82de34155",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "9660bdf5-2077-4027-9fc2-a71ca302c69a",
+            "name": "eliminar curso",
+            "url": "/course/deleteCourse/65e52770e0cdfc791f61aea5",
+            "method": "DELETE",
+            "sortNum": 120000,
+            "created": "2024-02-23T15:24:37.760Z",
+            "modified": "2024-03-04T01:50:37.130Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aWQiOiI2NWU1MTQwN2Y0ZTM2MmQ5MTkyZmUyYmEiLCJ1c2VybmFtZSI6Impub2oiLCJuYW1lIjoiSm9zdWUiLCJzdXJuYW1lIjoiTm9qIiwicm9sZSI6IlRFQUNIRVIiLCJpYXQiOjE3MDk1MTY5MjQsImV4cCI6MTcwOTUyNzcyNH0.UefH1sTLXi88qltfeWkKg5AwGjZLC6A3ekRSmr01Mbw"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1292299c-2013-468a-a4f3-80c1215c4fb1",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "fc7355da-47c7-4fc1-8118-58385e73adab",
+            "name": "update maestro",
+            "url": "/teacher/editProfile/65e52813f14f50904a7f9352",
+            "method": "PUT",
+            "sortNum": 130000,
+            "created": "2024-03-04T02:17:42.257Z",
+            "modified": "2024-03-04T02:24:13.369Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aWQiOiI2NWU1MjgxM2YxNGY1MDkwNGE3ZjkzNTIiLCJ1c2VybmFtZSI6InBhcm1hcyIsIm5hbWUiOiJQZWRybyIsInN1cm5hbWUiOiJBcm1hcyIsInJvbGUiOiJURUFDSEVSIiwiaWF0IjoxNzA5NTE4ODE2LCJleHAiOjE3MDk1Mjk2MTZ9.B3kIP8UwDb6CojebTPcHnaIQr_6ulxSTpxWhHGqNmiQ"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "email",
+                        "value": "ejemplo@kinal.edu.gt"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "3b178e9f-9f0d-4533-9984-0b456123bcc2",
+            "colId": "657c7401-ed99-47e5-b15d-47a546683123",
+            "containerId": "fc7355da-47c7-4fc1-8118-58385e73adab",
+            "name": "delete maestro",
+            "url": "/teacher/deleteProfile/65e52813f14f50904a7f9352",
+            "method": "DELETE",
+            "sortNum": 140000,
+            "created": "2024-03-04T02:27:27.510Z",
+            "modified": "2024-03-04T02:30:12.855Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aWQiOiI2NWU1MjgxM2YxNGY1MDkwNGE3ZjkzNTIiLCJ1c2VybmFtZSI6InBhcm1hcyIsIm5hbWUiOiJQZWRybyIsInN1cm5hbWUiOiJBcm1hcyIsInJvbGUiOiJURUFDSEVSIiwiaWF0IjoxNzA5NTE4ODE2LCJleHAiOjE3MDk1Mjk2MTZ9.B3kIP8UwDb6CojebTPcHnaIQr_6ulxSTpxWhHGqNmiQ"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:2980"
+        }
+    }
+}

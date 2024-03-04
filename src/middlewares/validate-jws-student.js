@@ -10,7 +10,7 @@ export const validateJwtStudent = async (req, res, next) => {
         if(!token) return res.status(401).send({message: 'Unauthorized'})
         let {sid} = jwt.verify(token, secretkey)
         let student = await Student.findOne({_id: sid})
-        if(!student) return res.status(401).send({message: 'Teacher not found - Unauthorized'})
+        if(!student) return res.status(401).send({message: 'Student not found - Unauthorized'})
         req.student = student
         next()
     } catch (error) {
